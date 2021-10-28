@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="js/pixi.min.js"></script>
+    <script>
+		var app = new PIXI.Application(417,806);
+        document.body.appendChild(app.view);
+        
+       var start = new PIXI.Sprite.fromImage("res/river.png");
+       app.stage.addChild(start);
+       start.scale.x=0.25;
+       start.scale.y=0.25;
+        
+        var chuan = new PIXI.Sprite.fromImage("res/chuan.png");
+       app.stage.addChild(chuan);
+       chuan.scale.x=0.25;
+       chuan.scale.y=0.25;
+       chuan.x=220;
+       chuan.y=600;
+       
+        var ren = new PIXI.Sprite.fromImage("res/ren.png");
+       app.stage.addChild(ren);
+       ren.scale.x=0.25;
+       ren.scale.y=0.25;
+       ren.x=250;
+       ren.y=580;
+       
+       var kaishi = new PIXI.Sprite.fromImage("res/kaishi.png");
+       app.stage.addChild(kaishi);
+       kaishi.x=130;
+       kaishi.y=400;
+       kaishi.scale.x=0.5;
+       kaishi.scale.y=0.5;
+       kaishi.visible=false;
+          
+       
+       app.ticker.add(animate);
+		function animate() {
+			
+    if(chuan.y>=550)
+    {
+    	chuan.x-=0.15;
+       chuan.y-=0.15;
+       chuan.rotation=Math.PI/12;
+       ren.x-=0.15;
+       ren.y-=0.15;
+       
+        if(ren.scale.x>0.22&&ren.scale.x<=0.25)
+       {
+       	ren.scale.x-=0.0001;
+       ren.scale.y-=0.0001;
+       }
+       
+       if(chuan.scale.x>0.22)
+       {
+       	chuan.scale.x-=0.0001;
+       chuan.scale.y-=0.0001;
+       }
+       
+    }
+    
+    if(chuan.y>=500&&chuan.y<550)
+    {
+    	if(chuan.rotation<=1.2){
+    	chuan.rotation+=0.004;
+    	chuan.x+=0.2;
+    	chuan.y+=0.1;
+    	}
+    	
+    	chuan.y-=0.2;
+    	chuan.x+=0.1;
+    	
+    	 ren.x+=0.07;
+       ren.y-=0.12;
+       
+      if(ren.scale.x>0.2&&ren.scale.x<0.22)
+       {
+       	ren.scale.x-=0.0001;
+       ren.scale.y-=0.0001;
+       }
+       
+       if(chuan.scale.x>0.2&&chuan.scale.x<0.22)
+       {
+       	chuan.scale.x-=0.0001;
+       chuan.scale.y-=0.0001;
+       }
+       
+      }
+    
+    
+    
+       if(chuan.y>=470&&chuan.y<500)
+    {
+    	if(chuan.rotation>=0.3){
+    	chuan.rotation-=0.003;
+    	chuan.x-=0.2;
+    	chuan.y+=0.1;
+    	}
+    	
+    	chuan.y-=0.2;
+    	chuan.x+=0.1;
+    	
+    	 ren.x+=0.07;
+       ren.y-=0.12;
+       
+      if(ren.scale.x>0.1&&ren.scale.x<0.2)
+       {
+       	ren.scale.x-=0.0001;
+       ren.scale.y-=0.0001;
+       }
+       
+       if(chuan.scale.x>0.1&&chuan.scale.x<0.2)
+       {
+       	chuan.scale.x-=0.0001;
+       chuan.scale.y-=0.0001;
+       }
+       
+       
+    }
+    
+    
+    if(chuan.y>=430&&chuan.y<470&&chuan.x<380)
+    {
+    	if(chuan.rotation<=2){
+    	chuan.rotation+=0.003;
+    	chuan.x+=0.05;
+    	chuan.y+=0.1;
+    	}
+    	
+    	chuan.y-=0.2;
+    	chuan.x+=0.15;
+    	
+    	 ren.x+=0.08;
+       ren.y-=0.12;
+       
+      if(ren.scale.x>0.001&&ren.scale.x<0.1)
+       {
+       	ren.scale.x-=0.01;
+       ren.scale.y-=0.01;
+       }
+       
+       if(chuan.scale.x>0.001&&chuan.scale.x<0.1)
+       {
+       	chuan.scale.x-=0.01;
+       chuan.scale.y-=0.01;
+       }
+       
+       kaishi.visible=true;
+    }
+    
+  }  
+
+        
+        
+	var bg = new PIXI.Sprite.fromImage("res/no lu cao.png");
+        app.stage.addChild(bg);
+        bg.scale.x=0.25;
+        bg.scale.y=0.25;
+        bg.visible=false;
+        
+        var lu = new PIXI.Sprite.fromImage("res/lu.png");
+        lu.scale.x=0.25;
+        lu.scale.y=0.25;
+        lu.x=20;
+        lu.y=520;
+        app.stage.addChild(lu);
+        lu.visible=false;
+        
+        var cao = new PIXI.Sprite.fromImage("res/cao1.png");
+        cao.scale.x=0.25;
+        cao.scale.y=0.25;
+        cao.x=-10;
+        cao.y=510;
+        app.stage.addChild(cao);
+        cao.visible=false;
+        
+        var circle = new PIXI.Sprite.fromImage("res/c.png");
+        circle.x=50;
+        circle.y=600;
+        circle.scale.x=0.2;
+        circle.scale.y=0.2;
+        app.stage.addChild(circle);
+        circle.visible=false;
+            
+        kaishi.interactive = true;
+        kaishi.on("click",move);  
+        function move(){
+        	bg.visible=true;
+        	lu.visible=true;
+        	cao.visible=true;
+        	circle.visible=true;
+        }
+        
+        
+        circle.interactive=true;
+        circle.on("click",caoout);
+        function caoout(){
+        	
+        app.ticker.add(animate1);
+		function animate1() {
+    		cao.x-=1;
+    		if(lu.scale.x<0.4){
+    		lu.scale.x+=0.0005;
+    		lu.scale.y+=0.0005;
+    		lu.y-=0.1;
+    		circle.visible=false;
+    		}
+    }
+		
+		
+		}
+        
+        
+        
+    </script>
+</body>
+</html>
+       
